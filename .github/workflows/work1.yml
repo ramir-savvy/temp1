@@ -1,0 +1,17 @@
+name: work1
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          path: try1
+          
+      - name: Head Hash
+        run: |
+          git ls-remote -q | grep refs/heads/main$ | awk '{print $1}' | xargs git rev-parse --short
