@@ -20,6 +20,8 @@ jobs:
           cd try1
           git ls-remote -q | grep refs/heads/main$ | awk '{print $1}' | xargs git rev-parse --short
           git log --max-count=1
+          git rev-parse HEAD
+          git rev-parse --short HEAD
       
       - name: Sleep
         run: |
@@ -39,3 +41,5 @@ jobs:
           cd try2
           git ls-remote -q | grep refs/heads/main$ | awk '{print $1}' | xargs git rev-parse --short
           git log --max-count=1
+          git rev-parse HEAD
+          git rev-parse --short HEAD
