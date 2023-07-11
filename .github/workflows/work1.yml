@@ -8,8 +8,8 @@ jobs:
   gethash:
     runs-on: ubuntu-latest
     outputs:
-      headhash1: ${{ steps.headhash1.outputs.headhash1 }}
-      headhash2: ${{ steps.headhash1.outputs.headhash2 }}
+      headhash1: ${{ steps.headhash1.outputs.headhash }}
+      headhash2: ${{ steps.headhash1.outputs.headhash }}
     steps:
       - name: Checkout1
         uses: actions/checkout@v3
@@ -26,7 +26,7 @@ jobs:
           git log --max-count=1
           git rev-parse --short HEAD
           sha=$(git rev-parse HEAD)
-          echo "headhash1=$sha" >> "$GITHUB_OUTPUT"
+          echo "headhash=$sha" >> "$GITHUB_OUTPUT"
 
       - name: Sleep
         run: |
@@ -49,7 +49,7 @@ jobs:
           git log --max-count=1
           git rev-parse --short HEAD
           sha=$(git rev-parse HEAD)
-          echo "headhash1=$sha" >> "$GITHUB_OUTPUT"
+          echo "headhash=$sha" >> "$GITHUB_OUTPUT"
 
   job2:
     runs-on: ubuntu-latest
