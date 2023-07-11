@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       headhash1: ${{ steps.headhash1.outputs.headhash }}
-      headhash2: ${{ steps.headhash1.outputs.headhash }}
+      headhash2: ${{ steps.headhash2.outputs.headhash }}
     steps:
       - name: Checkout1
         uses: actions/checkout@v3
