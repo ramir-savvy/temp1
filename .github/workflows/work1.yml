@@ -20,7 +20,7 @@ jobs:
           cd try1
           git ls-remote -q | grep refs/heads/main$ | awk '{print $1}' | xargs git rev-parse --short
       
-      - name: Head Hash
+      - name: Sleep
         run: |
           echo sleeping...
           sleep 60
