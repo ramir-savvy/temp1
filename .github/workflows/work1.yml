@@ -2,6 +2,7 @@ name: work1
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   job1:
@@ -17,4 +18,21 @@ jobs:
           pwd
           echo $GITHUB_WORKSPACE
           cd try1
+          git ls-remote -q | grep refs/heads/main$ | awk '{print $1}' | xargs git rev-parse --short
+      
+      - name: Head Hash
+        run: |
+          echo sleeping...
+          sleep 60
+      
+      - name: Checkout2
+        uses: actions/checkout@v3
+        with:
+          path: try2
+  
+      - name: Head Hash2
+        run: |
+          pwd
+          echo $GITHUB_WORKSPACE
+          cd try2
           git ls-remote -q | grep refs/heads/main$ | awk '{print $1}' | xargs git rev-parse --short
