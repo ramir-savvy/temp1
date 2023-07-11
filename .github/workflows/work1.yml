@@ -3,7 +3,7 @@ name: work1
 on:
   workflow_dispatch:
   push:
-#comment6
+#comment7
 jobs:
   gethash:
     runs-on: ubuntu-latest
