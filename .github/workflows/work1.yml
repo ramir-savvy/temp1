@@ -19,6 +19,7 @@ jobs:
           echo $GITHUB_WORKSPACE
           cd try1
           git ls-remote -q | grep refs/heads/main$ | awk '{print $1}' | xargs git rev-parse --short
+          git log --max-count=1
       
       - name: Sleep
         run: |
@@ -36,3 +37,4 @@ jobs:
           echo $GITHUB_WORKSPACE
           cd try2
           git ls-remote -q | grep refs/heads/main$ | awk '{print $1}' | xargs git rev-parse --short
+          git log --max-count=1
