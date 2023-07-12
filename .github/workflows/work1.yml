@@ -11,6 +11,17 @@ jobs:
       headhash1: ${{ steps.headhash1.outputs.headhash }}
       headhash2: ${{ steps.headhash2.outputs.headhash }}
     steps:
+      - name: Output test
+        id: output_test
+        run: |
+          echo "output_test=1" >> "$GITHUB_OUTPUT"
+
+      - name: Output test check
+        id: output_test_check
+        if: steps.output_test.outputs.output_test == '2'
+        run: |
+          echo running!!!
+
       - name: Checkout1
         uses: actions/checkout@v3
         with:
@@ -63,8 +74,8 @@ jobs:
 
           echo "equalhead: $equalhead"
           echo "equalhead=$equalhead" >> "$GITHUB_OUTPUT"
-          echo "error exit code"
-          exit 1
+          # echo "error exit code"
+          # exit 1
 
       - name: Equal head
         if: steps.headhash2.outputs.equalhead == 'true'
