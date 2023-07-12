@@ -1,0 +1,15 @@
+name: work2
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+on:
+  workflow_dispatch:
+  push:
+#comment1
+jobs:
+  sleepjob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sleep
+        run: |
+          echo sleeping...
+          sleep 30

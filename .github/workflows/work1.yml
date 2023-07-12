@@ -1,8 +1,8 @@
 name: work1
 
 on:
-  workflow_dispatch:
-  push:
+  # workflow_dispatch:
+  # push:
 #comment9
 jobs:
   gethash:
