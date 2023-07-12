@@ -1,6 +1,7 @@
 name: work2
 
 # concurrency: ${{ github.workflow }}-${{ github.ref }}
+# concurrency: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
 concurrency: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
 on:
   workflow_dispatch:
@@ -12,9 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Sleep
+        env:
+          CONCURRENCY_NAME: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
         run: |
-          echo "github.ref     : $GITHUB_REF"
-          echo "github.head_ref: $GITHUB_HEAD_REF"
-          echo "github.ref_name: $GITHUB_REF_NAME"
+          echo "github.ref      : $GITHUB_REF"
+          echo "github.head_ref : $GITHUB_HEAD_REF"
+          echo "github.ref_name : $GITHUB_REF_NAME"
+          echo "CONCURRENCY_NAME: $CONCURRENCY_NAME"
           echo sleeping...
           sleep 30
