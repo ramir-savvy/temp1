@@ -11,5 +11,6 @@ jobs:
     steps:
       - name: Sleep
         run: |
+          echo "github.workflow: $GITHUB_WORKFLOW"
           echo sleeping...
           sleep 60
