@@ -44,12 +44,34 @@ jobs:
         run: |
           pwd
           echo $GITHUB_WORKSPACE
+          echo $GITHUB_REF
+          echo $GITHUB_REPOSITORY
+          echo ${GITHUB_REF#refs/*/}
+          echo ${GITHUB_REPOSITORY#*/}
+          echo $GITHUB_SHA
           cd try2
           git ls-remote -q | grep refs/heads/main$ | awk '{print $1}' | xargs git rev-parse --short
           git log --max-count=1
           git rev-parse --short HEAD
           sha=$(git rev-parse HEAD)
           echo "headhash=$sha" >> "$GITHUB_OUTPUT"
+
+          equalhead="false"
+          if [ $sha = $GITHUB_SHA]; then
+            equalhead="true"
+          fi
+          echo "equalhead=$equalhead" >> "$GITHUB_OUTPUT"
+
+      - name: Equal head
+        if: steps.headhash2.outputs.equalhead == 'true'
+        run: |
+          echo running!!!
+
+        - name: Not equal head
+        if: steps.headhash2.outputs.equalhead == 'false'
+        run: |
+          echo running!!!
+
 
   job2:
     runs-on: ubuntu-latest
