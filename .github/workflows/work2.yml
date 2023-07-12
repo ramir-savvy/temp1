@@ -1,6 +1,7 @@
 name: work2
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+# concurrency: ${{ github.workflow }}-${{ github.ref }}
+concurrency: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
 on:
   workflow_dispatch:
   pull_request_target:
