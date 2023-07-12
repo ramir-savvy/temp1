@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Sleep
         env:
-          CONCURRENCY_NAME: ${{ github.workflow }}-${{ github.ref_name || github.ref }}
+          CONCURRENCY_NAME: ${{ github.workflow }}-${{ github.ref_name || github.ref_name }}
         run: |
           echo "github.ref      : $GITHUB_REF"
           echo "github.head_ref : $GITHUB_HEAD_REF"
