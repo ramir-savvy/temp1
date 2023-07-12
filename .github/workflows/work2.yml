@@ -12,10 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Sleep
-        env:
-          TEST_GITHUB_REF: ${{github.ref}}
         run: |
-          echo "github.ref: $GITHUB_REF"
-          echo "TEST_GITHUB_REF: $TEST_GITHUB_REF"
+          echo "github.ref     : $GITHUB_REF"
+          echo "github.head_ref: $GITHUB_HEAD_REF"
           echo sleeping...
           sleep 30
