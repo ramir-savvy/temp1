@@ -57,7 +57,7 @@ jobs:
           echo "headhash=$sha" >> "$GITHUB_OUTPUT"
 
           equalhead="false"
-          if [ $sha = $GITHUB_SHA]; then
+          if [ $sha = $GITHUB_SHA ]; then
             equalhead="true"
           fi
           echo "equalhead=$equalhead" >> "$GITHUB_OUTPUT"
