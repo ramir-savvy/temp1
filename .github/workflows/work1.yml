@@ -67,7 +67,7 @@ jobs:
         run: |
           echo running!!!
 
-        - name: Not equal head
+      - name: Not equal head
         if: steps.headhash2.outputs.equalhead == 'false'
         run: |
           echo running!!!
