@@ -12,4 +12,4 @@ jobs:
       - name: Sleep
         run: |
           echo sleeping...
-          sleep 30
+          sleep 60
