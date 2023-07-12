@@ -24,15 +24,15 @@ jobs:
 
       - name: Checkout1
         uses: actions/checkout@v3
-        with:
-          path: try1
+        # with:
+        #   path: try1
 
       - name: Head Hash1
         id: headhash1
         run: |
           pwd
           echo $GITHUB_WORKSPACE
-          cd try1
+          # cd try1
           git ls-remote -q | grep refs/heads/main$ | awk '{print $1}' | xargs git rev-parse --short
           git log --max-count=1
           git rev-parse --short HEAD
