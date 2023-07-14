@@ -17,7 +17,7 @@ jobs:
         env:
           # CONCURRENCY_NAME: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
           CONCURRENCY_NAME: ${{ github.workflow }}-${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') &&  github.ref || github.run_id}}
-          VAl1: ${{ github.event.issue.pull_request && 'amir' || 'raz'}}
+          VAl1: ${{ github.event.issue.pull_request && 'amir' || 'raz'}} # NOTE: this isn't working. Always getting the value 'raz'
         run: |
           echo "github.event.issue.pull_request ": $VAl1
           echo "github.ref      : $GITHUB_REF"
