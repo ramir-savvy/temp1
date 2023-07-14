@@ -16,7 +16,7 @@ jobs:
       - name: Sleep
         env:
           # CONCURRENCY_NAME: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
-          CONVURRENCY_NAME: ${{ github.workflow }}-${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') &&  github.ref || github.run_id}}
+          CONCURRENCY_NAME: ${{ github.workflow }}-${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') &&  github.ref || github.run_id}}
           VAl1: ${{ github.event.issue.pull_request && 'amir' || 'raz'}}
         run: |
           echo "github.event.issue.pull_request ": $VAl1
