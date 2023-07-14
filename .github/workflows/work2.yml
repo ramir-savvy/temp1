@@ -2,7 +2,8 @@ name: work2
 
 # concurrency: ${{ github.workflow }}-${{ github.ref }}
 # concurrency: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
-concurrency: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+# concurrency: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+concurrency: ${{ github.workflow }}-${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') &&  github.ref || github.run_id}}
 on:
   workflow_dispatch:
   pull_request_target:
@@ -14,12 +15,15 @@ jobs:
     steps:
       - name: Sleep
         env:
-          CONCURRENCY_NAME: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+          # CONCURRENCY_NAME: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+          CONVURRENCY_NAME: ${{ github.workflow }}-${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') &&  github.ref || github.run_id}}
+          VAl1: ${{ github.event.issue.pull_request && 'amir' || 'raz'}}
         run: |
+          echo "github.event.issue.pull_request ": $VAl1
           echo "github.ref      : $GITHUB_REF"
           echo "github.head_ref : $GITHUB_HEAD_REF"
           echo "github.ref_name : $GITHUB_REF_NAME"
           echo "github.event_name : $GITHUB_EVENT_NAME"
           echo "CONCURRENCY_NAME: $CONCURRENCY_NAME"
           echo sleeping...
-          sleep 30
+          sleep 5
