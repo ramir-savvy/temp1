@@ -2,6 +2,8 @@ version: 2
 updates:
   - package-ecosystem: "gomod"
     directory: "/"
+    schedule:
+      interval: "monthly"
     groups:
       minor_and_patch_group_bump:
         update-types:
