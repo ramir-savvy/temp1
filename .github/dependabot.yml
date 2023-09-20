@@ -5,7 +5,7 @@ updates:
     schedule:
       interval: "monthly"
     groups:
-      minor_and_patch_group_bump:
+      gomod-dependencies:
         update-types:
         - "minor"
         - "patch"
