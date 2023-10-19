@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/DATA-DOG/go-sqlmock v1.5.0
 	github.com/lib/pq v1.10.9
-	go.uber.org/dig v1.17.0
+	go.uber.org/dig v1.17.1
 )
 
 require (
