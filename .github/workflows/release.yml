@@ -31,7 +31,7 @@ jobs:
           name: chart1
           repository: ghcr.io
           tag: ${{ steps.get_chart_yaml_values.outputs.chartversion  }}
-          path: charts/ # Default charts/{name}
+          path: charts/chart1
           registry: ghcr.io
           registry_username: ${{ github.actor }}
           registry_password: ${{ secrets.GITHUB_TOKEN }}
