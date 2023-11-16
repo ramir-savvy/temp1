@@ -30,7 +30,7 @@ jobs:
           cmd: yq .version charts/ramir-base-chart/Chart.yaml
 
       - name: Chart | Push
-        uses: appany/helm-oci-chart-releaser@v0
+        uses: appany/helm-oci-chart-releaser@v0.4.1
         with:
           name: ramir-base-chart
           repository: ${{ github.repository }}/charts
