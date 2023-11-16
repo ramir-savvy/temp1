@@ -17,12 +17,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Run script file
-        run: |
-           pwd
-           ls
-        shell: bash
-
       - name: Get Chart Version from helm
         id: chart_version
         uses: mikefarah/yq@master
