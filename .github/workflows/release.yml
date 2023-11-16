@@ -29,7 +29,7 @@ jobs:
         uses: appany/helm-oci-chart-releaser@v0.3.0
         with:
           name: ramir-base-chart
-          repository: ghcr.io
+          repository: ${{ github.repository }}/charts
           tag: ${{ steps.get_chart_yaml_values.outputs.chartversion  }}
           # path: # Defaults to charts/{name}
           registry: ghcr.io
