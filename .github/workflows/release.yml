@@ -22,16 +22,16 @@ jobs:
         uses: CumulusDS/get-yaml-paths-action@v1.0.1
         id: get_chart_yaml_values
         with:
-          file: charts/chart1/Chart.yaml
+          file: charts/ramir-base-chart/Chart.yaml
           chartversion: version
 
       - name: Chart | Push
         uses: appany/helm-oci-chart-releaser@v0.3.0
         with:
-          name: chart1
+          name: ramir-base-chart
           repository: ghcr.io
           tag: ${{ steps.get_chart_yaml_values.outputs.chartversion  }}
-          path: charts/chart1
+          # path: # Defaults to charts/{name}
           registry: ghcr.io
           registry_username: ${{ github.actor }}
           registry_password: ${{ secrets.GITHUB_TOKEN }}
