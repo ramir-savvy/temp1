@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  release:
+  charts-release:
     permissions:
       packages: write
     runs-on: ubuntu-latest
