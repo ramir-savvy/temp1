@@ -5,15 +5,17 @@ on:
     branches:
       - main
 
+env:
+  CREATED_TIME: ${{ github.event.workflow_run.created_at }}
+  DUMMY1: "dummy1"
+      
 jobs:
   charts-release:
     permissions:
       contents: read
       packages: write
     runs-on: ubuntu-latest
-    env:
-      CREATED_TIME: ${{ github.event.workflow_run.created_at }}
-
+    
     steps:
       - name: Check Queued Time
         run: |
@@ -25,6 +27,7 @@ jobs:
           ELAPSED_TIME=$((CURRENT_TIME - QUEUED_TIME))
 
           echo "CREATED_TIME: ${{ env.CREATED_TIME }}"
+          echo "DUMMY1: ${{ env.DUMMY1 }}"
           echo "QUEUED_TIME: $QUEUED_TIME"
           echo "CURRENT_TIME: $CURRENT_TIME"
           echo "ELAPSED_TIME: $ELAPSED_TIME"
@@ -37,10 +40,10 @@ jobs:
               echo "::set-output name=cancel_workflow::false"
           fi
     
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      # - name: Checkout
+      #   uses: actions/checkout@v4
+      #   with:
+      #     fetch-depth: 0
 
       # - name: Get Chart Version from helm
       #   id: chart_version
