@@ -14,17 +14,17 @@ jobs:
 
     steps:
       - name: Check Queued Time
+        env:
+          CREATED_TIME: ${{ github.event.workflow_run.created_at }}"
         run: |
-          echo "env:"
-          env
-          echo "done
+
           MAX_QUEUED_TIME=1800 # Maximum queued time in seconds (e.g., 30 minutes)
 
-          QUEUED_TIME=$(date -d "${{ github.event.workflow_run.created_at }}" +%s)
+          QUEUED_TIME=$(date -d "$CREATED_TIME" +%s)
           CURRENT_TIME=$(date +%s)
           ELAPSED_TIME=$((CURRENT_TIME - QUEUED_TIME))
 
-          echo "CREATED_TIME: ${{ github.event.workflow_run.created_at }}"
+          echo "CREATED_TIME: $CREATED_TIME"
           echo "QUEUED_TIME: $QUEUED_TIME"
           echo "CURRENT_TIME: $CURRENT_TIME"
           echo "ELAPSED_TIME: $ELAPSED_TIME"
