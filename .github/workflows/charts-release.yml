@@ -13,6 +13,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check Queued Time
+        run: |
+          MAX_QUEUED_TIME=1800 # Maximum queued time in seconds (e.g., 30 minutes)
+
+          QUEUED_TIME=$(date -d "${{ github.event.workflow_run.created_at }}" +%s)
+          CURRENT_TIME=$(date +%s)
+          ELAPSED_TIME=$((CURRENT_TIME - QUEUED_TIME))
+
+          echo "CREATED_TIME: ${{ github.event.workflow_run.created_at }}"
+          echo "QUEUED_TIME: $QUEUED_TIME"
+          echo "CURRENT_TIME: $CURRENT_TIME"
+          echo "ELAPSED_TIME: $ELAPSED_TIME"
+
+          if [ $ELAPSED_TIME -gt $MAX_QUEUED_TIME ]; then
+              echo "Queued for too long. Cancelling the workflow."
+              echo "::set-output name=cancel_workflow::true"
+          else
+              echo "Queued time is within limits."
+              echo "::set-output name=cancel_workflow::false"
+          fi
+    
       - name: Checkout
         uses: actions/checkout@v4
         with:
