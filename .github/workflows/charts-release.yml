@@ -6,8 +6,8 @@ on:
       - main
 
 env:
-  # CREATED_TIME: ${{ github.event.workflow_run.created_at }}
-  CREATED_TIME: ${{ github.event.workflow_run }}
+  CREATED_TIME: ${{ github.event.workflow_run.created_at }}
+  # CREATED_TIME: ${{ github.event.workflow_run }}
   DUMMY1: "dummy1"
       
 jobs:
