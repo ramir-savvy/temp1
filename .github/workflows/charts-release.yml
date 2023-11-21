@@ -20,7 +20,7 @@ jobs:
 
           MAX_QUEUED_TIME=1800 # Maximum queued time in seconds (e.g., 30 minutes)
 
-          QUEUED_TIME=$(date -d "$CREATED_TIME" +%s)
+          # QUEUED_TIME=$(date -d "$CREATED_TIME" +%s)
           CURRENT_TIME=$(date +%s)
           ELAPSED_TIME=$((CURRENT_TIME - QUEUED_TIME))
 
