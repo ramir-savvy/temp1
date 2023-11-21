@@ -27,8 +27,10 @@ jobs:
           CURRENT_TIME=$(date +%s)
           ELAPSED_TIME=$((CURRENT_TIME - QUEUED_TIME))
 
-          echo "CREATED_TIME: ${{ env.CREATED_TIME }}"
-          echo "DUMMY1: ${{ env.DUMMY1 }}"
+          # echo "CREATED_TIME: ${{ env.CREATED_TIME }}"
+          # echo "DUMMY1: ${{ env.DUMMY1 }}"
+          echo "CREATED_TIME: $CREATED_TIME"
+          echo "DUMMY1: $DUMMY1"
           echo "QUEUED_TIME: $QUEUED_TIME"
           echo "CURRENT_TIME: $CURRENT_TIME"
           echo "ELAPSED_TIME: $ELAPSED_TIME"
