@@ -15,6 +15,9 @@ jobs:
     steps:
       - name: Check Queued Time
         run: |
+          echo "env:"
+          env
+          echo "done
           MAX_QUEUED_TIME=1800 # Maximum queued time in seconds (e.g., 30 minutes)
 
           QUEUED_TIME=$(date -d "${{ github.event.workflow_run.created_at }}" +%s)
@@ -39,20 +42,20 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get Chart Version from helm
-        id: chart_version
-        uses: mikefarah/yq@master
-        with:
-          cmd: yq .version charts/ramir-base-chart/Chart.yaml
+      # - name: Get Chart Version from helm
+      #   id: chart_version
+      #   uses: mikefarah/yq@master
+      #   with:
+      #     cmd: yq .version charts/ramir-base-chart/Chart.yaml
 
-      - name: Chart | Push
-        uses: appany/helm-oci-chart-releaser@v0.4.1
-        with:
-          name: ramir-base-chart
-          repository: ${{ github.repository }}/charts
-          tag: ${{ steps.chart_version.outputs.result  }}
-          # path: # Defaults to charts/{name}
-          registry: ghcr.io
-          registry_username: ${{ github.actor }}
-          registry_password: ${{ secrets.GITHUB_TOKEN }}
-          # update_dependencies: 'true' # Defaults to false
+      # - name: Chart | Push
+      #   uses: appany/helm-oci-chart-releaser@v0.4.1
+      #   with:
+      #     name: ramir-base-chart
+      #     repository: ${{ github.repository }}/charts
+      #     tag: ${{ steps.chart_version.outputs.result  }}
+      #     # path: # Defaults to charts/{name}
+      #     registry: ghcr.io
+      #     registry_username: ${{ github.actor }}
+      #     registry_password: ${{ secrets.GITHUB_TOKEN }}
+      #     # update_dependencies: 'true' # Defaults to false
