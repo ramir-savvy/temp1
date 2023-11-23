@@ -23,6 +23,7 @@ jobs:
         run: |
 
           echo GITHUB_REF: $GITHUB_REF
+          echo GITHUB_SHA: $GITHUB_SHA
           MAX_QUEUED_TIME=1800 # Maximum queued time in seconds (e.g., 30 minutes)
 
           # QUEUED_TIME=$(date -d "${{ env.CREATED_TIME }}" +%s)
