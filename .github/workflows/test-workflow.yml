@@ -6,7 +6,7 @@ on:
 
 env:
   SOMETHING: 1000
-
+jobs:
   test:
     name: call workflow
     uses: ./.github/workflows/callee.yml
