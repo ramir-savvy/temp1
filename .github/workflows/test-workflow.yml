@@ -12,4 +12,4 @@ jobs:
     uses: ./.github/workflows/callee.yml
     secrets: inherit
     with:
-      message: ${{ env.SOMETHING }}
+      message: ${{ var.SOMETHING }}
