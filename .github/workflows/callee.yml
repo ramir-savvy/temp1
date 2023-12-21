@@ -1,0 +1,13 @@
+name: Callee Workflow
+
+inputs:
+  something:
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Callee test
+      run: |
+        echo "HERE!!!: " ${{ inputs.additional_arguments }}
+      shell: bash
