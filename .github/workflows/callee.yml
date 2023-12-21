@@ -1,13 +1,16 @@
 name: Callee Workflow
 
-inputs:
-  something:
-    required: true
+on:
+  workflow_call:
+    inputs:
+      something:
+        required: true
+        type: number
 
-runs:
-  using: "composite"
-  steps:
-    - name: Callee test
-      run: |
-        echo "HERE!!!: " ${{ inputs.additional_arguments }}
-      shell: bash
+jobs:
+  callee-job:
+    steps:
+      - name: Callee step
+        run: |
+          echo "HERE!!!: " ${{ inputs.additional_arguments }}
+        shell: bash
