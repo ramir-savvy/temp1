@@ -1,0 +1,15 @@
+name: Test Workflow
+
+on:
+  workflow_dispatch:
+  push:
+
+env:
+  SOMETHING: 1000
+
+  test:
+    name: call workflow
+    uses: ./.github/workflows/callee.yml
+    secrets: inherit
+    with:
+      message: ${{ env.SOMETHING }}
