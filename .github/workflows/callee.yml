@@ -9,6 +9,7 @@ on:
 
 jobs:
   callee-job:
+    runs-on: ubuntu-latest
     steps:
       - name: Callee step
         run: |
