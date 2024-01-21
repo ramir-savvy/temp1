@@ -1,4 +1,4 @@
-FROM node:18-bullseye as node_builder
+FROM node:21-bullseye as node_builder
 WORKDIR /build
 COPY ["./", "./"]
 RUN addgroup --system unbiased && adduser unbiased --shell /bin/false --system --ingroup unbiased
@@ -11,7 +11,7 @@ RUN echo "@unbiased-security:registry=https://npm.pkg.github.com\n//npm.pkg.gith
 RUN npm install
 RUN npm run build
 
-FROM node:18-bullseye as modules
+FROM node:21-bullseye as modules
 WORKDIR /modules
 COPY ["./", "./"]
 RUN addgroup --system unbiased && adduser unbiased --shell /bin/false --system --ingroup unbiased
@@ -23,7 +23,7 @@ RUN echo "@unbiased-security:registry=https://npm.pkg.github.com\n//npm.pkg.gith
 RUN git config --global url."https://${INFRA_TOKEN}:@github.com".insteadOf "ssh://git@github.com"
 RUN npm install --production
 
-FROM node:18-bullseye as prod_container
+FROM node:21-bullseye as prod_container
 ENV NODE_ENV=production
 RUN addgroup --system unbiased && adduser unbiased --shell /bin/false --system --ingroup unbiased
 
