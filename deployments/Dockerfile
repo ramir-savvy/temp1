@@ -1,4 +1,4 @@
-FROM node:21-bullseye as node_builder
+FROM node:18-bullseye as node_builder
 WORKDIR /build
 COPY ["./", "./"]
 RUN addgroup --system unbiased && adduser unbiased --shell /bin/false --system --ingroup unbiased
