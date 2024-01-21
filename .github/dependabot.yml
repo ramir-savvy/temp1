@@ -1,1 +1,12 @@
-
+version: 2
+updates:
+  - package-ecosystem: "docker"
+    directory: "/deployments"
+    schedule:
+      interval: daily
+    groups:
+      docker-dependencies:
+        update-types:
+        - "minor"
+        - "patch"
+  # this..
