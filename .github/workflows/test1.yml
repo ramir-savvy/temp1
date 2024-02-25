@@ -5,9 +5,9 @@ on:
   # pull_request:
   #   branches:
   #     - master
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
 
 # permissions:
 #   contents: write
